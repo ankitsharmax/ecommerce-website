@@ -36,13 +36,15 @@ function Home() {
 
     return (    
         <>
-        <div className="row">
-            <Main products={products} onAdd={onAdd}></Main>
-            <Basket
-            cartItems={cartItems}
-            onAdd={onAdd}
-            onRemove={onRemove}
-            ></Basket>
+        <div className="body">
+            <div className="row">
+                <Main products={products} onAdd={onAdd}></Main>
+                <Basket
+                cartItems={cartItems}
+                onAdd={onAdd}
+                onRemove={onRemove}
+                ></Basket>
+            </div>
         </div>
         </>
     )

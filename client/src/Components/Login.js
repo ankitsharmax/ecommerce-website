@@ -9,6 +9,11 @@ const Login = () => {
 
     const loginUser = async (e) => {
         e.preventDefault();
+        if (email=="" || password==""){
+            window.alert("Please specify all fields")
+            history('/');
+            return;
+        }
 
         const res = await fetch('/signin', {
             method: "POST",
@@ -41,14 +46,14 @@ const Login = () => {
             <form method="POST">
             <label>Email</label>
             <input type="text" id="email" name="email" placeholder="Your email.."
-             value={email} onChange={(e) => setEmail(e.target.value)}/>
+             value={email} onChange={(e) => setEmail(e.target.value)} required/>
         
         
             <label>Password</label>
             <input type="password" id="password" name="password" placeholder="Your password"
              value={password} onChange={(e) => setPassword(e.target.value)} />
         
-            <input type="submit" value="Submit" value="Login" onClick={loginUser} />
+            <input type="submit" value="Submit" value="Login" onClick={loginUser} required/>
             </form>
             <h5>New User? <NavLink to="/Signup"><span className="text-primary"> Register here </span></NavLink></h5>
             </div>
