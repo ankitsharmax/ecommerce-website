@@ -10,34 +10,6 @@ router.get('/', (req,res) => {
     res.send('Hello world from the server route.js');
 });
 
-// USING PROMISES
-// router.post('/register', (req, res) => {
-
-//         const { name, email, phone, password, cpassword} = req.body;
-
-//         if (!name || !email || !phone || !password || !cpassword) {
-//             return res.status(422).json({error: "Please specify all fields."});
-//         }
-
-//         User.findOne({email:email})
-//         .then((userExist) => {
-//             if (userExist) {
-//                 return res.status(422).json({error: "Email already exist"});
-//             }
-
-//             const user = new User({name, email, phone, password, cpassword});
-
-//             user.save().then(() => {
-//                 res.status(201).json({message:"user registered successfully"});
-//             }).catch((err) => res.status(500).json({error:"Failed to register"}));
-//         }).catch(err => {console.log(err); });
-
-//         // res.json({message:req.body})
-//         // res.send("My router page");
-// })
-
-// |||||||||||||||||||||||||||||||USING ASYNC AWAIT||||||||||||||
-
 // register route
 router.post('/register', async (req, res) => {
 
