@@ -1,4 +1,6 @@
 # E-commerce website using MERN!
+## URL: https://myamazonpage.herokuapp.com/
+
 ## Client:
 Move to the client directory and run the following code in the terminal
 `- npm install`
