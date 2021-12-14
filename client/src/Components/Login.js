@@ -9,7 +9,7 @@ const Login = () => {
 
     const loginUser = async (e) => {
         e.preventDefault();
-        if (email=="" || password==""){
+        if (email==="" || password===""){
             window.alert("Please specify all fields")
             history('/');
             return;

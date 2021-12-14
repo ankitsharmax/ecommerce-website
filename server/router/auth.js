@@ -119,4 +119,19 @@ router.post('/checkout', async (req,res) => {
     
 })
 
+// MyOrder retrieve user transaction records
+router.post('/myorderdata', async (req, res) => {
+    console.log("Myorder data");
+    // res.json(req.body);
+    const {emailid} = req.body;
+    // res.json({emailid:emailid});
+    try {
+        // res.json({message: req.body});
+        const userOrder = await Transaction.find({emailid:emailid});
+        res.json({orderrecords: userOrder});
+    } catch (err) {
+        console.log(err);
+    }
+})
+
 module.exports = router;

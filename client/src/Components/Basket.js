@@ -16,9 +16,9 @@ export default function Basket(props) {
         
         // start
         const {id,name,price,image,qty} = cartItems[i];
-        const emailid = sessionStorage.email;
+        let emailid = sessionStorage.email;
         const totalprice = qty*price;
-        // emailid = emailid.slice(1,-1);
+        emailid = emailid.slice(1,-1);
         console.log(emailid,id,name,price,image,qty,totalprice); 
         
         const res = await fetch("/checkout",{

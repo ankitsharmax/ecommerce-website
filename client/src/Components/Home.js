@@ -5,10 +5,8 @@ import Basket from "./Basket";
 import data from "../data";
 import { useState } from 'react';
 import '../custom.css';
-import {useLocation} from 'react-router-dom';
 
 function Home() {
-    const location = useLocation();
     // const email = location.state.email;
     // console.log(location.state.email);
 

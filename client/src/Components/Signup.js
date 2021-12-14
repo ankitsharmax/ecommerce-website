@@ -59,11 +59,11 @@ const Signup = () => {
              placeholder="Your name.." />
 
             <label>Email</label>
-            <input type="text" id="email" name="email" value={user.email}onChange={handleInputs}
+            <input type="text" id="email" name="email" value={user.email} onChange={handleInputs}
              placeholder="Your email.."/>
 
             <label>Phone</label>
-            <input type="text" id="phone" name="phone" value={user.phone}onChange={handleInputs}
+            <input type="text" id="phone" name="phone" value={user.phone} onChange={handleInputs}
              placeholder="Your phone.."/>
         
         

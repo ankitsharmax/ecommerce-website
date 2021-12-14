@@ -6,7 +6,6 @@ import Home from "./Components/Home";
 import MyOrder from "./Components/MyOrder";
 import Login from "./Components/Login";
 import Signup from "./Components/Signup";
-import Profile from "./Components/Profile";
 import Logout from "./Components/Logout";
 
 const App = () => {
@@ -29,9 +28,6 @@ const App = () => {
 
           <Route path="/Home" element={<><Navbar/> <Home/></>}>
           </Route>
-
-          {/* <Route path="/Profile" element={<><Navbar/> <Profile/></>}>
-          </Route> */}
 
         </Routes>
     </>
