@@ -30,8 +30,8 @@ const App = () => {
           <Route path="/Home" element={<><Navbar/> <Home/></>}>
           </Route>
 
-          <Route path="/Profile" element={<><Navbar/> <Profile/></>}>
-          </Route>
+          {/* <Route path="/Profile" element={<><Navbar/> <Profile/></>}>
+          </Route> */}
 
         </Routes>
     </>

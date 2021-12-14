@@ -34,6 +34,9 @@ const Login = () => {
             window.alert("Login Successful");
             console.log("Login Successful")
 
+            sessionStorage.setItem('email',JSON.stringify(email));
+
+            // history('/Home',{state:{email:email}});
             history('/Home');
         }
     }

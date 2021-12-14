@@ -1,9 +1,54 @@
 import React from 'react';
+import {useNavigate} from 'react-router-dom';
 
 export default function Basket(props) {
   const { cartItems, onAdd, onRemove } = props;
   const itemsPrice = cartItems.reduce((a, c) => a + c.qty * c.price, 0);
   const totalPrice = itemsPrice;
+
+  const history = useNavigate();
+
+  const PlaceOrder = async (e) => {
+      console.log("Place order");
+      // console.log(cartItems[0]);
+
+      for (var i=0; i<cartItems.length;i++){
+        
+        // start
+        const {id,name,price,image,qty} = cartItems[i];
+        const emailid = sessionStorage.email;
+        const totalprice = qty*price;
+        // emailid = emailid.slice(1,-1);
+        console.log(emailid,id,name,price,image,qty,totalprice); 
+        
+        const res = await fetch("/checkout",{
+          method:"POST",
+          headers:{
+            "Content-Type":"application/json"
+          },
+          body:JSON.stringify({
+            emailid,id,name,price,qty,totalprice
+        })
+      });
+
+      const data = await res.json();
+
+      if (!data) {
+        console.log("Order Failed to place");
+        alert("Order Failed! Please try after some time.");
+        history('/Home');
+      } else {
+        console.log("Order Successfully placed");
+      }
+
+      // end
+      }
+      alert("Order Successfully Placed!");
+      history('/MyOrder');
+
+  }
+
+
   return (
     <aside className="block col-1">
       <h2>Cart Items</h2>
@@ -41,7 +86,7 @@ export default function Basket(props) {
             </div>
             <hr />
             <div className="row">
-              <button className='checkout' onClick={() => alert('Implement Checkout!')}>
+              <button className='checkout' onClick={() => PlaceOrder()}>
                 Checkout
               </button>
             </div>

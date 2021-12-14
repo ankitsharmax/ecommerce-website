@@ -5,8 +5,14 @@ import Basket from "./Basket";
 import data from "../data";
 import { useState } from 'react';
 import '../custom.css';
+import {useLocation} from 'react-router-dom';
 
 function Home() {
+    const location = useLocation();
+    // const email = location.state.email;
+    // console.log(location.state.email);
+
+
     const { products } = data;
     const [cartItems, setCartItems] = useState([]);
     const onAdd = (product) => {
@@ -38,11 +44,12 @@ function Home() {
         <>
         <div className="body">
             <div className="row">
-                <Main products={products} onAdd={onAdd}></Main>
+                <Main products={products} email={sessionStorage.email} onAdd={onAdd}></Main>
                 <Basket
                 cartItems={cartItems}
                 onAdd={onAdd}
                 onRemove={onRemove}
+                // email={email}
                 ></Basket>
             </div>
         </div>

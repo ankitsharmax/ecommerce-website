@@ -5,6 +5,7 @@ const jwt = require('jsonwebtoken');
 
 require('../db/conn');
 const User = require('../model/userSchema');
+const Transaction = require('../model/transactionSchema');
 
 router.get('/', (req,res) => {
     res.send('Hello world from the server route.js');
@@ -29,7 +30,7 @@ router.post('/register', async (req, res) => {
                 return res.status(422).json({error: "Password and Confirm password does not match"});
             } else {
                 const user = new User({name, email, phone, password, cpassword});
-                // hash the password
+                
                 await user.save();
 
                 return res.status(201).json({message:"user registered successfully"});
@@ -73,7 +74,7 @@ router.post('/signin', async (req,res) => {
             if (!isMatch){
                 res.status(400).json({message:"Email or password does not match"});
             } else {
-                res.json({message:"User login successfully"})
+                res.json({message:"User login successfully"});
             }
         } else {
             res.status(400).json({message:"Email or password does not match"});
@@ -90,6 +91,32 @@ router.get('/logout', (req, res) => {
     console.log("Logout process");
     res.clearCookie('jwtoken',{path:'/'});
     res.status(200).send('User Logut');
+});
+
+router.post('/checkout', async (req,res) => {
+    console.log("Checkout order");
+    try{
+        
+        // res.json({message:req.body});
+        const { emailid, id, name, price, qty, totalprice} = req.body;
+        // return res.json({emailid, id, name, price, qty, totalprice});
+
+        if (!emailid || !id || !name || !price || !qty || !totalprice) {
+            return res.status(422).json({error: "Order failed to place."});
+        }
+        
+        // const transaction = new Transaction({emailid, id, name, price, qty, totalprice});
+        const transaction = new Transaction({emailid, id, name, price, qty, totalprice});
+        res.status(200).json({mesage: "Order Placed"});
+        
+        await transaction.save();
+
+
+        
+    } catch (err){
+        console.log(err);
+    }
+    
 })
 
 module.exports = router;

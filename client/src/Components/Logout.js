@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 const Logout = () => {
+    sessionStorage.clear();
 
     const history = useNavigate();
     useEffect(() => {
